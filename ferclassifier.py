@@ -38,3 +38,28 @@ for i in labels.index:
         print("No Image")
 
 print("All Images copied successfully in their respective folder....")
+
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    
+    parser.add_argument("-s", 
+                    "--src_folder", 
+                    type = str,
+                    help = "Path to the folder containing images in png format.",
+                    required = True)  
+    parser.add_argument("-d", 
+                        "--dest_folder", 
+                        type = str, 
+                        help = "Destination folder. You have to create differnet folder for Training, Tesing and Valiadtion folders first.", 
+                        required = True)    
+    parser.add_argument("-fer", 
+                        "--fer_path", 
+                        type = str,
+                        help = "Path to the fer+ csv file from microsoft's fer+ repo.",
+                        required = True)
+                                              
+
+    args = parser.parse_args()
+    main(args.src_folder, args.dest_folder, args.fer_path)
